@@ -1,0 +1,202 @@
+.home {
+            padding: 20px;
+        }
+
+ .table-container {
+            margin: 0 20px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .responsive-table-wrapper {
+            max-height: 600px;
+            min-height: 600px;
+            overflow-y: auto;
+            overflow-x: auto;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        .modern-table {
+            width: 100%;
+            min-width: 1200px;
+            border-collapse: collapse;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .modern-table th, .modern-table td {
+            padding: 12px 16px;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .modern-table th {
+            background-color: #f5f5f5;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .modern-table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        .modern-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .modern-table thead th {
+            position: sticky;
+            top: 0;
+            background-color: #f5f5f5;
+            z-index: 2;
+        }
+
+.expense-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-new-expense,
+.btn-print-expense {
+    background-color: #2f4265;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-new-expense:hover,
+.btn-print-expense:hover {
+    background-color: black;
+}
+
+.expense-search,
+.expense-filter {
+    padding: 9px 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.expense-search {
+    width: 250px;
+}
+
+.expense-filter {
+    width: 200px;
+}
+
+
+
+
+ .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0; left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.4);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 12px;
+            width: 400px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .modal-content h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .modal-content input, .modal-content select, .modal-content textarea {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .modal-content button {
+            width: 100%;
+            background-color: #2e7d32;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-expense-modal {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 22px;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .close-expense-modal:hover {
+            color: #000;
+        }
+
+        .totals-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px 20px 0 20px;
+    flex-wrap: wrap;
+}
+
+.total-box {
+    background-color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    width: 220px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.total-box h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #222;
+}
+
+.total-value {
+    background-color: #2f4265;
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
