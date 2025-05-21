@@ -26,10 +26,16 @@ if (!isset($_GET['user_id']) || empty($_GET['user_id'])) {
 
 $user_id = intval($_GET['user_id']);
 
+if ($user_id === 0) {
+    http_response_code(200);
+    echo json_encode(["message" => "User is non-admin or applicant", "status_id" => null]);
+    exit;
+}
+
 $servername = "localhost";
 $username = "root";
 $password_db = "";
-$dbname = "admission";
+$dbname = "mis";
 
 $conn = new mysqli($servername, $username, $password_db, $dbname);
 

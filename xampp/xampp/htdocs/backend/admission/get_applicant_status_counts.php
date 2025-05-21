@@ -1,45 +1,48 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 
 $servername = "localhost";
 $username = "root";
 $password_db = "";
-$dbname = "admission";
+$dbname = "mis";
 
 $conn = new mysqli($servername, $username, $password_db, $dbname);
 
 if ($conn->connect_error) {
     http_response_code(500);
-    echo json_encode(["message" => "Connection failed: " . $conn->connect_error]);
+    echo json_encode(["error" => "Connection failed: " . $conn->connect_error]);
     exit;
 }
 
-// Updated query to join with status table
-$sql = "SELECT s.name as status, COUNT(*) as count 
-        FROM user_application ua
-        LEFT JOIN status s ON ua.status_id = s.id
-        GROUP BY s.name";
+$sql = "
+    SELECT 
+        status_id,
+        COUNT(*) as count
+    FROM user_application
+    GROUP BY status_id
+";
 
 $result = $conn->query($sql);
 
 $statusCounts = [
     "Approved" => 0,
     "Pending" => 0,
-    "Rejected" => 0
+    "Rejected" => 0,
 ];
 
-if ($result) {
-    while ($row = $result->fetch_assoc()) {
-        $status = $row['status'];
-        $count = (int)$row['count'];
-        if (array_key_exists($status, $statusCounts)) {
-            $statusCounts[$status] = $count;
-        }
-    }
+while ($row = $result->fetch_assoc()) {
+    if ($row['status_id'] == 1) $statusCounts["Pending"] = (int)$row['count'];
+    if ($row['status_id'] == 2) $statusCounts["Approved"] = (int)$row['count'];
+    if ($row['status_id'] == 3) $statusCounts["Rejected"] = (int)$row['count'];
 }
 
-echo json_encode($statusCounts);
-
 $conn->close();
+
+// Clean output and return JSON
+ob_clean();
+echo json_encode($statusCounts);
 ?>

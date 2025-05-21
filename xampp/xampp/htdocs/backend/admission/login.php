@@ -1,11 +1,8 @@
 <?php
-// Development only: enable error display to help debugging
 ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Headers for CORS and JSON
-header("Access-Control-Allow-Origin: http://localhost:5173");
+header("Access-Control-Allow-Origin: http://localhost:3000");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
@@ -21,26 +18,18 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// Read JSON input
 $data = json_decode(file_get_contents("php://input"), true);
 
-if (!isset($data['email'], $data['password'])) {
+if (!isset($data['username'], $data['password'])) {
     http_response_code(400);
     echo json_encode(["message" => "Invalid input"]);
     exit;
 }
 
-$email = $data['email'];
-$password = $data['password'];
+$input_username = $data['username'];
+$input_password = $data['password'];
 
-// Database credentials
-$servername = "localhost";
-$username = "root";
-$password_db = "";
-$dbname = "admission";
-
-// Create DB connection
-$conn = new mysqli($servername,$username, $password_db,  $dbname);
+$conn = new mysqli("localhost", "root", "", "mis");
 
 if ($conn->connect_error) {
     http_response_code(500);
@@ -48,44 +37,37 @@ if ($conn->connect_error) {
     exit;
 }
 
-// Adjust table name to lowercase `users` if that's what you use
-$stmt = $conn->prepare("SELECT id, password, email, is_admin FROM users WHERE email = ?");
-$stmt->bind_param("s", $email);
+$stmt = $conn->prepare("SELECT id, username, password, email, is_admin FROM user WHERE username = ?");
+$stmt->bind_param("s", $input_username);
 $stmt->execute();
-$stmt->store_result();
 
-if ($stmt->num_rows === 0) {
+$result = $stmt->get_result();
+
+if ($result->num_rows === 0) {
     http_response_code(401);
-    echo json_encode(["message" => "Invalid email or password"]);
-    $stmt->close();
-    $conn->close();
+    echo json_encode(["message" => "Invalid username or password"]);
     exit;
 }
 
-$stmt->bind_result($id, $hashed_password, $email_db, $is_admin);
-$stmt->fetch();
+$row = $result->fetch_assoc();
 
-// Password verification
-if (password_verify($password, $hashed_password)) {
-    // ✅ Optional: Only include this if `last_login` column exists
-    // $update_stmt = $conn->prepare("UPDATE users SET last_login = NOW() WHERE id = ?");
-    // $update_stmt->bind_param("i", $id);
-    // $update_stmt->execute();
-    // $update_stmt->close();
-
+if ($input_password === $row["password"] || password_verify($input_password, $row["password"])) {
     echo json_encode([
-        "message" => "Login successful",
+        "success" => true,
+        "message" => "Login successful!",
         "user" => [
-            "id" => $id,
-            "email" => $email_db,
-            "is_admin" => $is_admin
+            "id" => $row["id"],
+            "username" => $row["username"],
+            "email" => $row["email"],
+            "is_admin" => (int)$row["is_admin"]
         ]
     ]);
 } else {
     http_response_code(401);
-    echo json_encode(["message" => "Invalid email or password"]);
+    echo json_encode(["success" => false, "message" => "Invalid username or password"]);
 }
+
+
 
 $stmt->close();
 $conn->close();
-?>
