@@ -1,0 +1,129 @@
+.home {
+            padding: 20px;
+        }
+
+        .totals-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.total-box {
+    background-color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    width: 220px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.total-box h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #222;
+}
+
+.total-value {
+    background-color: #2f4265;
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.table-container {
+    margin: 0 20px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.responsive-table-wrapper {
+    max-height: 500px;
+    min-height: 500px;
+    overflow-y: auto;
+    overflow-x: auto;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.modern-table {
+    width: 100%;
+    min-width: 1000px;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.modern-table th, .modern-table td {
+    padding: 12px 16px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.modern-table th {
+    background-color: #f5f5f5;
+    color: #333;
+    font-weight: 600;
+}
+
+.modern-table tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.modern-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.modern-table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f5f5f5;
+    z-index: 2;
+}
+
+    .filter-container {
+            padding: 0 20px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .filter-container select {
+            padding: 8px 12px;
+            font-size: 14px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .status {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+
+        .status.paid {
+            background-color: #d9fdd3;
+            color: #2e7d32;
+        }
+
+        .status.pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status.hold {
+            background-color: #f8d7da;
+            color: #721c24;
+        }

@@ -1,6 +1,4 @@
 <?php
-error_reporting(0);
-ini_set('display_errors', '0');
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 
@@ -35,3 +33,4 @@ if ($result) {
 echo json_encode($applicants);
 
 $conn->close();
+?>

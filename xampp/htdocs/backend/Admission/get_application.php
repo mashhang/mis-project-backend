@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, OPTIONS");
@@ -28,20 +28,32 @@ $user_id = intval($_GET['user_id']);
 
 $servername = "localhost";
 $username = "root";
-$password_db = "Omamam@010101";
+$password_db = "";
 $dbname = "admission";
 
 $conn = new mysqli($servername, $username, $password_db, $dbname);
 
 if ($conn->connect_error) {
+    error_log("DB connection failed: " . $conn->connect_error);
     http_response_code(500);
     echo json_encode(["message" => "Connection failed: " . $conn->connect_error]);
     exit;
 }
 
-$stmt = $conn->prepare("SELECT name, dob, course, contact, email, address, guardianName, guardianRelation, guardianAddress FROM user_application WHERE user_id = ?");
+$stmt = $conn->prepare("SELECT user_id, name, dob, course, contact, email, address, guardianName, guardianRelation, guardianAddress, status_id FROM user_application WHERE user_id = ?");
+if (!$stmt) {
+    http_response_code(500);
+    echo json_encode(["message" => "Prepare failed: " . $conn->error]);
+    exit;
+}
 $stmt->bind_param("i", $user_id);
-$stmt->execute();
+if (!$stmt->execute()) {
+    http_response_code(500);
+    echo json_encode(["message" => "Execute failed: " . $stmt->error]);
+    $stmt->close();
+    $conn->close();
+    exit;
+}
 $result = $stmt->get_result();
 
 if ($result->num_rows === 0) {

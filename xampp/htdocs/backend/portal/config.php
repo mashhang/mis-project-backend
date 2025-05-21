@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 // ── Database connection ────────────────────────────────────────────────────
 try {
   $pdo = new PDO(
-    'mysql:host=127.0.0.1;dbname=student_portal;charset=utf8mb4',
+    'mysql:host=127.0.0.1;dbname=students;charset=utf8mb4',
     'root',
     '',
     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]

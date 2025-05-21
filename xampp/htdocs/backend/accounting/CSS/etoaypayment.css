@@ -1,0 +1,272 @@
+.home {
+            padding: 20px;
+        }
+.search-bar-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background-color: #e0e0e0;
+    padding: 10px 15px;
+    border-radius: 6px;
+}
+
+.search-bar-container input[type="text"],
+.search-bar-container select,
+.search-bar-container button {
+    height: 40px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.search-bar-container input[type="text"] {
+    padding: 10px 14px;
+    width: 200px;
+}
+
+.search-bar-container select {
+    padding: 10px 14px;
+    width: 200px;
+    background-color: white;
+}
+
+.search-bar-container button {
+    padding: 10px 16px;
+    background-color: #385170;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar-container button:hover {
+    background-color: #2c3f5b;
+}
+
+
+        .table-container {
+            margin: 0 20px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .responsive-table-wrapper {
+    max-height: 700px;
+    min-height: 700px;  /* Set fixed height here */
+    overflow-y: auto;
+    overflow-x: auto; /* Keep horizontal scroll for small screens */
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+        .modern-table {
+            width: 100%;
+            min-width: 1000px;
+            border-collapse: collapse;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .modern-table th, .modern-table td {
+            padding: 12px 16px;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .modern-table th {
+            background-color: #f5f5f5;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .modern-table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        .modern-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .modern-table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f5f5f5;
+    z-index: 2;
+}
+
+    /* White Modal Styling */
+/* Modal container (already present, keep it) */
+/* Modal Overlay */
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Modal Box */
+.modal-content {
+    background: #ffffff;
+    width: 100%;
+    max-width: 400px;
+    padding: 28px 24px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    font-family: 'Segoe UI', sans-serif;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Title */
+.modal-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Labels */
+.modal-content label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    display: block;
+    color: #333;
+}
+
+/* Inputs */
+.modal-content input[type="text"],
+.modal-content input[type="number"],
+.modal-content input[type="date"] {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    outline: none;
+    background: #f9f9f9;
+    transition: border 0.2s, background 0.2s;
+}
+.modal-content input:focus {
+    border-color: #2e7d32;
+    background: #fff;
+}
+
+/* Submit Button */
+.submit-btn {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #2e7d32;
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    font-weight: 600;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.submit-btn:hover {
+    background-color: #256528;
+}
+
+/* Close Button */
+.close-modal {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    font-size: 20px;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+.close-modal:hover {
+    color: #000;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pagination-ui {
+    margin-top: 20px;
+    background: #f8f8f8;
+    padding: 12px 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pagination-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.pagination-form select,
+.pagination-form input[type="number"] {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    align-items: center;
+}
+
+.pagination-form button {
+    background-color: #385170;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.pagination-form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination-form span {
+    font-weight: 500;
+}
+
+
+/* Pay Button in Table */
+.pay-btn {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+.pay-btn:hover {
+    background-color: #1976D2;
+}

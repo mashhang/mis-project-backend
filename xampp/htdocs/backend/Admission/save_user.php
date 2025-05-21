@@ -1,25 +1,19 @@
 <?php
-error_reporting(0);
-ini_set('display_errors', '0');
-// Allow CORS from any origin for development
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: http://localhost:5173");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
-// Handle preflight OPTIONS request
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit();
 }
 
-// Only allow POST requests
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(["message" => "Method Not Allowed"]);
     exit;
 }
 
-// Read JSON input
 $data = json_decode(file_get_contents("php://input"), true);
 
 if (!isset($data['name'], $data['email'], $data['password'])) {
@@ -34,7 +28,7 @@ $password = password_hash($data['password'], PASSWORD_DEFAULT);
 
 $servername = "localhost";
 $username = "root";
-$password_db = "Omamam@010101";
+$password_db = "";
 $dbname = "admission";
 
 $conn = new mysqli($servername, $username, $password_db, $dbname);

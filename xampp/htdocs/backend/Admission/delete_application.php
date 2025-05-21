@@ -25,7 +25,7 @@ if (!isset($data['id'])) {
 
 $servername = "localhost";
 $username = "root";
-$password_db = "Omamam@010101";
+$password_db = "";
 $dbname = "admission";
 
 $conn = new mysqli($servername, $username, $password_db, $dbname);
