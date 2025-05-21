@@ -34,7 +34,7 @@ foreach ($required_fields as $field) {
 $servername = "localhost";
 $username = "root";
 $password_db = "";
-$dbname = "admission";
+$dbname = "mis";
 
 $conn = new mysqli($servername, $username, $password_db, $dbname);
 
